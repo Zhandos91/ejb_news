@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.epam.suleimenov</groupId>
+    <artifactId>ejb_news</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>web</module>
+        <module>ear</module>
+        <module>domain</module>
+        <module>ejb</module>
+    </modules>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <javaee-api-version>7.0</javaee-api-version>
+
+    </properties>
+
+    <developers>
+        <developer>
+            <name>Zhandos Suleimenov</name>
+            <email>Zhandos_Suleimenov@epam.com</email>
+            <organization>EPAM Systems</organization>
+            <organizationUrl>http://www.epam.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee-api-version}</version>
+        </dependency>
+
+    </dependencies>
+
+</dependencyManagement>
+
+</project>
