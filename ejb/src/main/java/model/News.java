@@ -1,6 +1,4 @@
-package com.epam.suleimenov.model;
-
-import com.epam.suleimenov.model.BaseEntity;
+package model;
 
 import javax.persistence.*;
 import java.io.Serializable;

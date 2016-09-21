@@ -11,12 +11,9 @@
     <artifactId>ear</artifactId>
     <packaging>ear</packaging>
 
-
     <properties>
         <project.version>1.0-SNAPSHOT</project.version>
-
     </properties>
-
 
     <dependencies>
 
@@ -32,13 +29,6 @@
             <artifactId>web</artifactId>
             <version>${project.version}</version>
             <type>war</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.epam.suleimenov</groupId>
-            <artifactId>domain</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
         </dependency>
 
     </dependencies>
@@ -60,10 +50,6 @@
                             <groupId>com.epam.suleimenov</groupId>
                             <artifactId>ejb</artifactId>
                         </ejbModule>
-                        <jarModule>
-                            <groupId>com.epam.suleimenov</groupId>
-                            <artifactId>domain</artifactId>
-                        </jarModule>
                     </modules>
                 </configuration>
             </plugin>

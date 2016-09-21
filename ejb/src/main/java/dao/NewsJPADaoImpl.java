@@ -1,6 +1,6 @@
-package com.epam.suleimenov.dao;
+package dao;
 
-import com.epam.suleimenov.model.News;
+import model.News;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,13 +10,14 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
-public class JPADAO implements NewsDAO {
+public class NewsJPADaoImpl implements DAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "oracle")
     EntityManager entityManager;
 
     @Override
     public List<News> getList() {
+        System.out.println("Getting list");
         TypedQuery<News> query = entityManager.createNamedQuery("News.getAll", News.class);
         List<News> list = query.getResultList();
         return list;

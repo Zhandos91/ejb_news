@@ -1,4 +1,4 @@
-package com.epam.suleimenov.model;
+package model;
 
 import javax.persistence.*;
 
