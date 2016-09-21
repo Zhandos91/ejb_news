@@ -3,9 +3,9 @@ package service;
 import dao.DAO;
 import model.News;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
 //import javax.inject.Inject;
@@ -13,8 +13,8 @@ import java.util.List;
 //import javax.enterprise.context.RequestScoped;
 
 //@Stateless(name = "NewsService")
-//@Named("NewsManager")
-@ManagedBean(name = "NewsManager")
+@Named("NewsManager")
+//@ManagedBean(name = "NewsManager")
 @RequestScoped
 public class NewsServiceBean implements NewsService {
 
