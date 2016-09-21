@@ -12,12 +12,49 @@
     <artifactId>web</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <project.version>1.0-SNAPSHOT</project.version>
+    </properties>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <packagingExcludes>%regex[WEB-INF/lib/(?!primefaces).*.jar]</packagingExcludes>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>sample-services-${project.version}.jar</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces-version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.epam.suleimenov</groupId>
+            <artifactId>ejb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

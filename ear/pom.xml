@@ -35,12 +35,16 @@
 
 
     <build>
+        <finalName>ejb_news</finalName>
         <plugins>
+            <!--Ear plugin -creating the ear - watch out skinny WARS!-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>2.7</version>
                 <configuration>
+                    <finalName>ejb_news</finalName>
+                    <defaultJavaBundleDir>lib/</defaultJavaBundleDir>
+                    <skinnyWars>true</skinnyWars>
                     <modules>
                         <webModule>
                             <groupId>com.epam.suleimenov</groupId>
@@ -53,7 +57,26 @@
                     </modules>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <configuration>
+                    <jboss-home>${wildfly-server-home}/wildfly-${wildfly-version}</jboss-home>
+                    <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>DEPLOY TO WILDFLY</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>undeploy</goal>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
     </build>
 
 </project>

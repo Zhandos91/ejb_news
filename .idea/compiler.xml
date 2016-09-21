@@ -29,9 +29,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="domain" target="1.7" />
-      <module name="ear" target="1.7" />
+      <module name="ear" target="1.5" />
       <module name="ejb" target="1.7" />
-      <module name="ejb_news" target="1.7" />
+      <module name="ejb_news" target="1.5" />
       <module name="web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
