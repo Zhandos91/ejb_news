@@ -13,6 +13,7 @@ public interface NewsService {
     boolean remove(int id);
     News fetchById(int id);
     News add(News news);
+    void removeAll();
 }
 
 

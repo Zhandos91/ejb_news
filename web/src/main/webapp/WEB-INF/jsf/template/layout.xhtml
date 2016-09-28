@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <title><ui:insert name="windowTitle"/></title>
+    <!--<h:outputStylesheet library="css" name="styles.css"/>-->
+</h:head>
+
+<h:body>
+    <div id="heading" style="padding: 20px;height: 30px;margin-bottom: 10px;background-color: lightseagreen;border: 1px solid darkGray;">
+        <ui:insert name="heading">
+            <ui:include src="/WEB-INF/jsf/sections/header.xhtml"/>
+        </ui:insert>
+    </div>
+
+    <div id="menu" style=" border: thin solid lightGray;padding: 5px;width: 200px;height: 800px;background-color: darkorange;">
+        <ui:insert name="menu">
+            <ui:include src="/WEB-INF/jsf/sections/menu.xhtml"/>
+        </ui:insert>
+    </div>
+
+    <div id="content" style="padding: 5px;border: thin solid lightGray;background: #fefeef;position: absolute;right: 8px;left: 230px;height: auto;top: 90px;">
+        <ui:insert name="content">
+            <ui:include src="/WEB-INF/jsf/sections/body.xhtml"/>
+        </ui:insert>
+    </div>
+
+    <div id="footer" style="text-align: center;padding: 20px;height: 30px;margin-top: 2400px;background-color: green;border: 1px solid darkGray;">
+        <ui:insert name="footer">
+            <ui:include src="/WEB-INF/jsf/sections/footer.xhtml"/>
+        </ui:insert>
+    </div>
+</h:body>
+</html>

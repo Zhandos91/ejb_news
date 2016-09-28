@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head></h:head>
+<h:body>
+    <ui:composition>
+        <h:form>
+        <ui:repeat value="#{NewsManager.getList()}" var="news">
+
+
+
+            <div style="padding-top:50px; margin-bottom: 50px; border:1px solid; background-color: darkgoldenrod">
+                <h:outputLabel style="float:left">#{news.title}</h:outputLabel>
+                <h:outputLabel style="float: right">#{news.date}</h:outputLabel>
+                <br/>
+
+                <div style="padding-top:10px;width:80%">
+                    <h:outputLabel value="#{news.brief}" />
+                </div>
+                <br/>
+
+                <div style="float: right;">
+
+                <h:link style="padding-right: 10px" outcome="viewNewsPage" value="view">
+                <f:param name="title" value="#{news.title}" />
+                    <f:param name="date" value="#{news.date}" />
+                    <f:param name="brief" value="#{news.brief}" />
+                    <f:param name="content" value="#{news.content}" />
+                    <f:param name="id" value="#{news.id}" />
+                </h:link>
+
+                <h:link style="padding-right: 10px" outcome="editNewsPage" value="edit">
+                    <f:param name="username" value="mkyong" />
+                </h:link>
+
+                    <h:selectBooleanCheckbox value="#{NewsManager.checked[news.id]}" >
+
+                    </h:selectBooleanCheckbox>
+                </div>
+            </div>
+
+
+
+
+        </ui:repeat>
+
+            <!--<h3>Using JSF outcome</h3>-->
+            <!--<h:commandButton action="viewNews" value="Page2" />-->
+            <div style="float: right">
+                <h:commandButton value="Delete" action="#{NewsManager.removeAll()}" />
+            </div>
+
+        </h:form>
+
+
+    </ui:composition>
+</h:body>
+</html>
