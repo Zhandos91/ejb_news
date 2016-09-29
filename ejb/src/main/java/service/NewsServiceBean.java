@@ -2,32 +2,55 @@ package service;
 
 import dao.DAO;
 import model.News;
+import org.slf4j.Logger;
 
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
+//import org.jboss.logging.Logger;
+
+
 @Named("NewsManager")
 @RequestScoped
 public class NewsServiceBean implements NewsService {
 
+    private static Logger logger = getLogger(NewsServiceBean.class);
     @Inject
     private DAO newsDAO;
+    private Map<String, Boolean> checked = new HashMap<String, Boolean>();
 
-    private Map<Integer, Boolean> checked = new HashMap<Integer, Boolean>();
+    @Inject
+    private NewsBean newsBean;
+
+    @Inject TestBean testBean;
+
+    private String test;
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
 
     public String getMessage() {
+
         return "Hello f ejb test!";
     }
 
-    public Map<Integer, Boolean> getChecked() {
+    public Map<String, Boolean> getChecked() {
         return checked;
     }
 
-    public void setChecked(Map<Integer, Boolean> checked) {
+    public void setChecked(Map<String, Boolean> checked) {
         this.checked = checked;
     }
 
@@ -52,16 +75,36 @@ public class NewsServiceBean implements NewsService {
     }
 
     @Override
-    public News add(News news) {
-        return newsDAO.add(news);
+    public String add() {
+
+//        logger.info("Adding {}", newsBean);
+//        logger.info("Adding" + newsBean.getContent());
+//        logger.info("Adding", newsBean.getContent());
+//        newsDAO.add(this.news);
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        NewsBean news = context.getApplication().evaluateExpressionGet(context, "#{News}", NewsBean.class);
+
+        logger.info("News-Content: " + news.getTitle());
+
+        return "index";
     }
 
     @Override
     public void removeAll() {
 
-        for (Map.Entry<Integer, Boolean> entry : checked.entrySet()) {
+//        newsDAO.remove(1059);
+
+
+        logger.info("RemoveAll");
+        logger.info("Edited {}" + checked);
+
+        logger.error("checked is empty: {}", checked.isEmpty());
+
+        for (Map.Entry<String, Boolean> entry : checked.entrySet()) {
+
             if (entry.getValue()) {
-                newsDAO.remove(entry.getKey());
+                newsDAO.remove(Integer.parseInt(entry.getKey()));
             }
         }
     }

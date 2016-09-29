@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="Adding news"/>
+</f:view>
+
+<h:form>
+    <h:panelGrid columns="1" rules="all" width="100%" style="background:#03547C;color:#FDD017">
+        <h:column>
+            <h:outputText value="News Title: "></h:outputText>
+            <h:inputText value="#{News.title}"/>
+        </h:column>
+        <h:column>
+            <h:outputText value="News Date: "></h:outputText>
+            <h:inputText value="#{News.date}"/>
+        </h:column>
+        <h:column>
+            <h:outputText value="Brief: "></h:outputText>
+            <h:inputText value="#{News.brief}" />
+        </h:column>
+        <h:column>
+            <h:outputText value="Content: "></h:outputText>
+            <h:inputText value="#{News.content}" />
+        </h:column>
+
+    </h:panelGrid>
+    <h:panelGrid columns="2" rules="all" width="100%" style="background:#03547C;color:#FDD017">
+
+        <h:column>
+            <h:commandButton id="submitBtn" value="Submit" action="#{NewsManager.add}"/>
+            <!--<f:setPropertyActionListener target="#{News}" value="#{News}" />-->
+        </h:column>
+    </h:panelGrid>
+</h:form>
+
+</html>

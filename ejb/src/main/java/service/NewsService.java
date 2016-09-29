@@ -12,7 +12,7 @@ public interface NewsService {
     News save(News news);
     boolean remove(int id);
     News fetchById(int id);
-    News add(News news);
+    String add();
     void removeAll();
 }
 

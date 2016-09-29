@@ -5,17 +5,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head></h:head>
 <h:body>
-    <ui:composition>
-
-        <h3>News</h3>
-
-            <h:link value="News List" outcome="index"/> <br/>
-            <h:link value="Add News" outcome="addNewsPage" />
-        <!--<h:link style="padding-right: 10px" outcome="editNewsPage" value="edit">-->
-            <!--<f:param name="username" value="mkyong" />-->
-        <!--</h:link>-->
+    <ui:composition template="/WEB-INF/jsf/template/layout.xhtml" >
+        <ui:define name="content">
+            <ui:include src="/WEB-INF/jsf/addNews.xhtml" />
+        </ui:define>
     </ui:composition>
+
+
+
 </h:body>
 </html>

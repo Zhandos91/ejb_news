@@ -5,7 +5,7 @@ import javax.inject.Named;
 
 @Named("News")
 @RequestScoped
-public class News {
+public class NewsBean {
 
     private String title;
     private String date;
@@ -14,6 +14,12 @@ public class News {
     private Integer id;
 
     public String getTitle() {
+
+//
+//        Map<String, String> params =FacesContext.getCurrentInstance().
+//                getExternalContext().getRequestParameterMap();
+//         title = params.get("title");
+
         return title;
     }
 

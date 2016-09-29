@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head></h:head>
 <h:body>
     <ui:composition>
@@ -26,7 +26,7 @@
                 <div style="float: right;">
 
                 <h:link style="padding-right: 10px" outcome="viewNewsPage" value="view">
-                <f:param name="title" value="#{news.title}" />
+                    <f:param name="title" value="#{news.title}" />
                     <f:param name="date" value="#{news.date}" />
                     <f:param name="brief" value="#{news.brief}" />
                     <f:param name="content" value="#{news.content}" />
@@ -35,9 +35,10 @@
 
                 <h:link style="padding-right: 10px" outcome="editNewsPage" value="edit">
                     <f:param name="username" value="mkyong" />
+                    <!--<f:setPropertyActionListener target="#{News.content}" value="#{news.content}" />-->
                 </h:link>
 
-                    <h:selectBooleanCheckbox value="#{NewsManager.checked[news.id]}" >
+                    <h:selectBooleanCheckbox value="#{NewsManager.checked['news.id']}" >
 
                     </h:selectBooleanCheckbox>
                 </div>
@@ -48,10 +49,12 @@
 
         </ui:repeat>
 
+
             <!--<h3>Using JSF outcome</h3>-->
             <!--<h:commandButton action="viewNews" value="Page2" />-->
             <div style="float: right">
-                <h:commandButton value="Delete" action="#{NewsManager.removeAll()}" />
+                <h:commandButton value="Delete" type="submit" action="#{NewsManager.removeAll()}" />
+                <h:commandButton value="Click Me!" type="submit" onclick="alert('Hello World!');" />
             </div>
 
         </h:form>

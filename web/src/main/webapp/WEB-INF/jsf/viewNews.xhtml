@@ -6,6 +6,25 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="View news"/>
+    <h:outputLabel value="View news"/><br/><br/>
+
+    <!--<h:outputLabel value="#{News.title}"/>-->
+    <!--<h:outputLabel value="#{News.getTitle()}"/>-->
 </f:view>
+
+<h:form>
+
+<h:outputText value="News title: #{param['title']}" /> <br/>
+<h:outputText value="News Date:  #{param['date']}" /> <br/>
+<h:outputText value="Brief:      #{param['brief']}" /> <br/>
+<h:outputText value="Content:    #{param['content']}" /> <br/>
+
+    <div style="float: right">
+        <h:commandButton value="EDIT" type="submit" action="#{NewsManager.removeAll()}" />
+        <h:commandButton value="DELETE" type="submit" onclick="alert('Hello World!');" />
+    </div>
+
+</h:form>
+
+
 </html>
