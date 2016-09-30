@@ -38,9 +38,8 @@
                     <!--<f:setPropertyActionListener target="#{News.content}" value="#{news.content}" />-->
                 </h:link>
 
-                    <h:selectBooleanCheckbox value="#{NewsManager.checked['news.id']}" >
-
-                    </h:selectBooleanCheckbox>
+                <!--    <h:selectBooleanCheckbox value="#{checked[news.id]}" >
+                    </h:selectBooleanCheckbox>-->
                 </div>
             </div>
 
@@ -49,6 +48,7 @@
 
         </ui:repeat>
 
+            <h:outputText value="#{checked[news.id]}" />
 
             <!--<h3>Using JSF outcome</h3>-->
             <!--<h:commandButton action="viewNews" value="Page2" />-->

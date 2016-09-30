@@ -4,8 +4,8 @@ import dao.DAO;
 import model.News;
 import org.slf4j.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.HashMap;
@@ -14,37 +14,41 @@ import java.util.Map;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-//import org.jboss.logging.Logger;
 
 
 @Named("NewsManager")
 @RequestScoped
+
 public class NewsServiceBean implements NewsService {
 
     private static Logger logger = getLogger(NewsServiceBean.class);
     @Inject
     private DAO newsDAO;
     private Map<String, Boolean> checked = new HashMap<String, Boolean>();
+    private News news;
 
-    @Inject
-    private NewsBean newsBean;
+    @PostConstruct
+    public void init() {
 
-    @Inject TestBean testBean;
-
-    private String test;
-
-    public String getTest() {
-        return test;
+        for(News news: getList()) {
+            checked.put(news.getId().toString(), Boolean.FALSE);
+        }
     }
 
-    public void setTest(String test) {
-        this.test = test;
+    public NewsServiceBean() {
+        logger.info("Creating news");
+        this.news = new News();
+
     }
 
-    public String getMessage() {
-
-        return "Hello f ejb test!";
+    public News getNews() {
+        return news;
     }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
+
 
     public Map<String, Boolean> getChecked() {
         return checked;
@@ -61,7 +65,13 @@ public class NewsServiceBean implements NewsService {
 
     @Override
     public News save(News news) {
-        return newsDAO.save(news);
+
+logger.info("News: {}", news);
+
+return news;
+
+
+//        return newsDAO.save(news);
     }
 
     @Override
@@ -75,17 +85,15 @@ public class NewsServiceBean implements NewsService {
     }
 
     @Override
-    public String add() {
+    public String add(News news) {
 
-//        logger.info("Adding {}", newsBean);
-//        logger.info("Adding" + newsBean.getContent());
-//        logger.info("Adding", newsBean.getContent());
-//        newsDAO.add(this.news);
+        logger.info("Adding {}", news);
+        newsDAO.add(news);
 
-        FacesContext context = FacesContext.getCurrentInstance();
-        NewsBean news = context.getApplication().evaluateExpressionGet(context, "#{News}", NewsBean.class);
+//        FacesContext context = FacesContext.getCurrentInstance();
+//        NewsBean news = context.getApplication().evaluateExpressionGet(context, "#{News}", NewsBean.class);
 
-        logger.info("News-Content: " + news.getTitle());
+//        logger.info("News-Content: " + news.getTitle());
 
         return "index";
     }
@@ -95,9 +103,7 @@ public class NewsServiceBean implements NewsService {
 
 //        newsDAO.remove(1059);
 
-
-        logger.info("RemoveAll");
-        logger.info("Edited {}" + checked);
+        logger.info("Booleans {}", checked);
 
         logger.error("checked is empty: {}", checked.isEmpty());
 

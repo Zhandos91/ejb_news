@@ -1,61 +1,22 @@
 package service;
 
-import javax.faces.bean.RequestScoped;
+import model.News;
+
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.io.Serializable;
 
-@Named("News")
+@Named("NewsBean")
 @RequestScoped
-public class NewsBean {
+public class NewsBean implements Serializable {
 
-    private String title;
-    private String date;
-    private String brief;
-    private String content;
-    private Integer id;
+    private News news = new News();
 
-    public String getTitle() {
-
-//
-//        Map<String, String> params =FacesContext.getCurrentInstance().
-//                getExternalContext().getRequestParameterMap();
-//         title = params.get("title");
-
-        return title;
+    public News getNews() {
+        return news;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getBrief() {
-        return brief;
-    }
-
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setNews(News news) {
+        this.news = news;
     }
 }
