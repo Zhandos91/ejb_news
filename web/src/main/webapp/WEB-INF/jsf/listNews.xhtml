@@ -38,7 +38,8 @@
                     <!--<f:setPropertyActionListener target="#{News.content}" value="#{news.content}" />-->
                 </h:link>
 
-                    <h:selectBooleanCheckbox value="#{CheckBoxHandler.checked[news.id]}" >
+                    <h:outputText value="#{news.id}" />
+                    <h:selectBooleanCheckbox value="#{testBean.checkMap[news.id]}" >
                     </h:selectBooleanCheckbox>
                 </div>
             </div>
@@ -51,10 +52,6 @@
 
         </ui:repeat>
 
-            <!--<h:outputText value="Checkedd:#{NewsManager.checked[news.id]}" />-->
-            <!--<h:outputText value="Checkedd:#{news.id}" />-->
-            <!--<h3>Using JSF outcome</h3>-->
-            <!--<h:commandButton action="viewNews" value="Page2" />-->
             <div style="float: right">
                 <h:commandButton value="Delete" type="submit" action="#{NewsManager.removeAll()}" />
                 <h:commandButton value="Click Me!" type="submit" onclick="alert('Hello World!');" />
@@ -62,7 +59,13 @@
 
         </h:form>
 
-        <!--<h:outputLabel value="Sec:#{NewsManager.checked['1000']}"/>-->
+
+
+
+
+
+
+
 
 
 
@@ -70,33 +73,20 @@
 
 
         <!--<h:form>-->
-            <!--<h:outputText value="Currently Selected : #{NewsManager.selected}" />-->
-<!--<br/>-->
-            <!--<ui:repeat var="item" value="#{NewsManager.getList()}">-->
-                <!--<h:outputText value="#{item.id}" />-->
-                <!--<h:selectBooleanCheckbox value="#{NewsManager.checked[item.id]}"/>-->
+            <!--<h:outputText value="Currently Selected : #{testBean.selected}" />-->
+            <!--<br/>-->
+
+        <!--<ui:repeat value="#{NewsManager.getList()}" var="news">-->
+
+            <!--<h:outputText value="#{news.id}" />-->
+            <!--<h:selectBooleanCheckbox value="#{testBean.checkMap[news.id]}"/>-->
             <!--</ui:repeat>-->
             <!--<br/>-->
             <!--<h:commandButton value="Update" action="refresh" />-->
-        <!--</h:form>-->
 
 
 
-
-        <!--<h:form>-->
-        <!--<h:outputText value="Currently Selected : #{NewsManager.selected}" />-->
-        <!--<br/>-->
-        <!--<ui:repeat var="item" value="#{NewsManager.list}">-->
-        <!--<h:outputText value="#{item.id}" />-->
-        <!--<h:selectBooleanCheckbox value="#{testBean.checkMap[item.id]}"/>-->
-        <!--</ui:repeat>-->
-        <!--<br/>-->
-        <!--<h:commandButton value="Update" action="refresh" />-->
-        <!--</h:form>-->
-
-
-
-
+    <!--</h:form>-->
 
     </ui:composition>
 </h:body>

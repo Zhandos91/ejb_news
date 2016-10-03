@@ -23,17 +23,19 @@ public class NewsServiceBean implements NewsService {
     @Inject
     private DAO newsDAO;
     private News news;
+    @Inject
+    TestBean testBean;
+//    private List<News> items;
 
     private Map<Integer, Boolean> checked = new HashMap<Integer, Boolean>();
 
-//@PostConstruct
+//    @PostConstruct
 //    public void NewsServiceBean() {
-//        logger.info("Initializing the checking map");
-//        for(News news: newsDAO.getList()) {
-//           checked.put(news.getId(), Boolean.TRUE);
-//
-//        }
-//
+//        items = newsDAO.getList();
+//    }
+
+//    public List<News> getItems() {
+//        return items;
 //    }
 
     public News getNews() {
@@ -90,11 +92,11 @@ public class NewsServiceBean implements NewsService {
 
 //        newsDAO.remove(1059);
 
-        logger.info("Booleans {}", checked);
+        logger.info("Booleans {}", testBean.getCheckMap());
 
-        logger.error("checked is empty: {}", checked.isEmpty());
+        logger.error("checked is empty: {}", testBean.getCheckMap().isEmpty());
 
-        for (Map.Entry<Integer, Boolean> entry : checked.entrySet()) {
+        for (Map.Entry<Integer, Boolean> entry : testBean.getCheckMap().entrySet()) {
 
             if (entry.getValue()) {
                 newsDAO.remove(entry.getKey());
