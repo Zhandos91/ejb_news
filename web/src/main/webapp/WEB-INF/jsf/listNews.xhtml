@@ -38,18 +38,21 @@
                     <!--<f:setPropertyActionListener target="#{News.content}" value="#{news.content}" />-->
                 </h:link>
 
-                <!--    <h:selectBooleanCheckbox value="#{checked[news.id]}" >
-                    </h:selectBooleanCheckbox>-->
+                    <h:selectBooleanCheckbox value="#{CheckBoxHandler.checked[news.id]}" >
+                    </h:selectBooleanCheckbox>
                 </div>
             </div>
 
 
+            <div style="background-color: aqua;">
+                <h:outputLabel value="#{news.id}" />
+            </div>
 
 
         </ui:repeat>
 
-            <h:outputText value="#{checked[news.id]}" />
-
+            <!--<h:outputText value="Checkedd:#{NewsManager.checked[news.id]}" />-->
+            <!--<h:outputText value="Checkedd:#{news.id}" />-->
             <!--<h3>Using JSF outcome</h3>-->
             <!--<h:commandButton action="viewNews" value="Page2" />-->
             <div style="float: right">
@@ -58,6 +61,41 @@
             </div>
 
         </h:form>
+
+        <!--<h:outputLabel value="Sec:#{NewsManager.checked['1000']}"/>-->
+
+
+
+
+
+
+        <!--<h:form>-->
+            <!--<h:outputText value="Currently Selected : #{NewsManager.selected}" />-->
+<!--<br/>-->
+            <!--<ui:repeat var="item" value="#{NewsManager.getList()}">-->
+                <!--<h:outputText value="#{item.id}" />-->
+                <!--<h:selectBooleanCheckbox value="#{NewsManager.checked[item.id]}"/>-->
+            <!--</ui:repeat>-->
+            <!--<br/>-->
+            <!--<h:commandButton value="Update" action="refresh" />-->
+        <!--</h:form>-->
+
+
+
+
+        <!--<h:form>-->
+        <!--<h:outputText value="Currently Selected : #{NewsManager.selected}" />-->
+        <!--<br/>-->
+        <!--<ui:repeat var="item" value="#{NewsManager.list}">-->
+        <!--<h:outputText value="#{item.id}" />-->
+        <!--<h:selectBooleanCheckbox value="#{testBean.checkMap[item.id]}"/>-->
+        <!--</ui:repeat>-->
+        <!--<br/>-->
+        <!--<h:commandButton value="Update" action="refresh" />-->
+        <!--</h:form>-->
+
+
+
 
 
     </ui:composition>

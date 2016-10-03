@@ -4,7 +4,6 @@ import dao.DAO;
 import model.News;
 import org.slf4j.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,31 +14,27 @@ import java.util.Map;
 import static org.slf4j.LoggerFactory.getLogger;
 
 
-
 @Named("NewsManager")
 @RequestScoped
 
 public class NewsServiceBean implements NewsService {
 
-    private static Logger logger = getLogger(NewsServiceBean.class);
+    private static Logger logger = getLogger(NewsService.class);
     @Inject
     private DAO newsDAO;
-    private Map<String, Boolean> checked = new HashMap<String, Boolean>();
     private News news;
 
-    @PostConstruct
-    public void init() {
+    private Map<Integer, Boolean> checked = new HashMap<Integer, Boolean>();
 
-        for(News news: getList()) {
-            checked.put(news.getId().toString(), Boolean.FALSE);
-        }
-    }
-
-    public NewsServiceBean() {
-        logger.info("Creating news");
-        this.news = new News();
-
-    }
+//@PostConstruct
+//    public void NewsServiceBean() {
+//        logger.info("Initializing the checking map");
+//        for(News news: newsDAO.getList()) {
+//           checked.put(news.getId(), Boolean.TRUE);
+//
+//        }
+//
+//    }
 
     public News getNews() {
         return news;
@@ -49,26 +44,18 @@ public class NewsServiceBean implements NewsService {
         this.news = news;
     }
 
-
-    public Map<String, Boolean> getChecked() {
-        return checked;
-    }
-
-    public void setChecked(Map<String, Boolean> checked) {
-        this.checked = checked;
-    }
-
     @Override
     public List<News> getList() {
+        logger.info("I'm getting the list");
         return newsDAO.getList();
     }
 
     @Override
     public News save(News news) {
 
-logger.info("News: {}", news);
+        logger.info("News: {}", news);
 
-return news;
+        return news;
 
 
 //        return newsDAO.save(news);
@@ -107,11 +94,43 @@ return news;
 
         logger.error("checked is empty: {}", checked.isEmpty());
 
-        for (Map.Entry<String, Boolean> entry : checked.entrySet()) {
+        for (Map.Entry<Integer, Boolean> entry : checked.entrySet()) {
 
             if (entry.getValue()) {
-                newsDAO.remove(Integer.parseInt(entry.getKey()));
+                newsDAO.remove(entry.getKey());
             }
         }
+    }
+
+    public Map<Integer, Boolean> getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Map<Integer, Boolean> checked) {
+        this.checked = checked;
+    }
+
+//    public String getSelected() {
+//        logger.info("Map {}", this.checked);
+//        logger.info("Map is empty " + this.checked.isEmpty());
+//        String result = "";
+//        for (Map.Entry<Integer,Boolean> entry : checked.entrySet()) {
+//            if (entry.getValue()) {
+//                result = result + ", "+entry.getKey();
+//            }
+//        }
+//        return result.length() == 0 ? "" : result.substring(2);
+//    }
+
+
+    public String getSelected() {
+        logger.info("Map {}", checked);
+        String result = "";
+        for (Map.Entry<Integer,Boolean> entry : checked.entrySet()) {
+            if (entry.getValue()) {
+                result = result + ", "+entry.getKey();
+            }
+        }
+        return result.length() == 0 ? "" : result.substring(2);
     }
 }
