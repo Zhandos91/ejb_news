@@ -39,7 +39,7 @@
                 </h:link>
 
                     <h:outputText value="#{news.id}" />
-                    <h:selectBooleanCheckbox value="#{testBean.checkMap[news.id]}" >
+                    <h:selectBooleanCheckbox value="#{checkBoxHandler.checkMap[news.id]}" >
                     </h:selectBooleanCheckbox>
                 </div>
             </div>
@@ -58,35 +58,6 @@
             </div>
 
         </h:form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!--<h:form>-->
-            <!--<h:outputText value="Currently Selected : #{testBean.selected}" />-->
-            <!--<br/>-->
-
-        <!--<ui:repeat value="#{NewsManager.getList()}" var="news">-->
-
-            <!--<h:outputText value="#{news.id}" />-->
-            <!--<h:selectBooleanCheckbox value="#{testBean.checkMap[news.id]}"/>-->
-            <!--</ui:repeat>-->
-            <!--<br/>-->
-            <!--<h:commandButton value="Update" action="refresh" />-->
-
-
-
-    <!--</h:form>-->
 
     </ui:composition>
 </h:body>
