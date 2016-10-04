@@ -30,14 +30,10 @@ public class NewsServiceBean implements NewsService {
     }
 
     @Override
-    public News save(News news) {
-
-        logger.info("News: {}", news);
-
-        return news;
-
-
-//        return newsDAO.save(news);
+    public String save(News news) {
+        logger.info("Saving News: {}", news);
+        newsDAO.save(news);
+        return "index";
     }
 
     @Override
@@ -52,7 +48,7 @@ public class NewsServiceBean implements NewsService {
 
     @Override
     public String add(News news) {
-        logger.info("Adding {}", news);
+        logger.info("Adding News {}", news);
         newsDAO.add(news);
         return "index";
     }

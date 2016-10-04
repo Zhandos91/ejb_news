@@ -3,11 +3,30 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Edit news"/>
-    <h:outputLabel value="#{News.content}"/><br/><br/>
-    <h:outputLabel value="#{News.title}"/><br/><br/>
+    <h:outputLabel value="Edit news"/><br/>
 </f:view>
+
+<h:form>
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:outputLabel value="News Title:"/>
+        <h:inputTextarea value="#{NewsBean.news.title}" cols="35"></h:inputTextarea>
+        <h:outputLabel value="News Date:"/>
+        <h:inputText value="#{NewsBean.news.date}"></h:inputText>
+        <h:outputLabel value="Brief:"/>
+        <h:inputTextarea value="#{NewsBean.news.brief}" rows="5" cols="35"></h:inputTextarea>
+        <h:outputLabel value="Content:"/>
+        <h:inputTextarea value="#{NewsBean.news.content}" rows="7" cols="35"></h:inputTextarea>
+        <h:inputHidden value="#{NewsBean.news.id}"></h:inputHidden>
+    </h:panelGrid>
+
+    <div style="margin-left: 100px">
+        <h:commandButton value="SAVE" action="#{NewsManager.save(NewsBean.news)}"/>
+        <h:commandButton value="CANCEL" action="index"></h:commandButton>
+    </div>
+
+</h:form>
+
+
 </html>

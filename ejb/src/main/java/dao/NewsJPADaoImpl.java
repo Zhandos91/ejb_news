@@ -26,6 +26,8 @@ public class NewsJPADaoImpl implements DAO {
     @Transactional
     @Override
     public News save(News news) {
+        if (entityManager.find(News.class, news.getId()) == null)
+            throw new IllegalArgumentException("Unknown news");
         entityManager.merge(news);
         return news;
     }

@@ -33,10 +33,19 @@
                     <f:param name="id" value="#{news.id}" />
                 </h:link>
 
-                <h:link style="padding-right: 10px" outcome="editNewsPage" value="edit">
-                    <f:param name="username" value="mkyong" />
-                    <!--<f:setPropertyActionListener target="#{News.content}" value="#{news.content}" />-->
-                </h:link>
+                <!--<h:link style="padding-right: 10px" outcome="editNewsPage" value="edit">-->
+                    <!--<f:param name="username" value="mkyong" />-->
+                    <!--<h:commandButton> <f:setPropertyActionListener target="#{NewsBean.news.title}" value="#{news.title}" /></h:commandButton>-->
+
+                <!--</h:link>-->
+
+                    <h:commandLink style="padding-right: 10px" action="editNewsPage" value="edit">
+                        <f:setPropertyActionListener target="#{NewsBean.news.title}" value="#{news.title}" />
+                        <f:setPropertyActionListener target="#{NewsBean.news.date}" value="#{news.date}" />
+                        <f:setPropertyActionListener target="#{NewsBean.news.brief}" value="#{news.brief}" />
+                        <f:setPropertyActionListener target="#{NewsBean.news.content}" value="#{news.content}" />
+                        <f:setPropertyActionListener target="#{NewsBean.news.id}" value="#{news.id}" />
+                    </h:commandLink>
 
                     <!--<h:outputText value="#{news.id}" />-->
                     <h:selectBooleanCheckbox value="#{checkBoxHandler.checkMap[news.id]}" >

@@ -9,7 +9,7 @@ import java.util.List;
 public interface NewsService {
 
     List<News> getList();
-    News save(News news);
+    String save(News news);
     boolean remove(int id);
     News fetchById(int id);
     String add(News news);
