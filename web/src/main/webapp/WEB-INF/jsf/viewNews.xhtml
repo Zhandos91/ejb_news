@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="View news"/><br/><br/>
+    <h:outputLabel value="News view"/><br/><br/>
 
     <!--<h:outputLabel value="#{News.title}"/>-->
     <!--<h:outputLabel value="#{News.getTitle()}"/>-->
@@ -14,14 +14,26 @@
 
 <h:form>
 
-<h:outputText value="News title: #{param['title']}" /> <br/>
-<h:outputText value="News Date:  #{param['date']}" /> <br/>
-<h:outputText value="Brief:      #{param['brief']}" /> <br/>
-<h:outputText value="Content:    #{param['content']}" /> <br/>
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:outputLabel value="News Title"/>
+        <h:outputLabel value="#{NewsBean.news.title}" ></h:outputLabel>
+        <h:outputLabel value="News Date"/>
+        <h:outputLabel value="#{NewsBean.news.date}"></h:outputLabel>
+        <h:outputLabel value="Brief"/>
+        <h:outputLabel value="#{NewsBean.news.brief}" ></h:outputLabel>
+        <h:outputLabel value="Content"/>
+        <h:outputLabel value="#{NewsBean.news.content}" ></h:outputLabel>
+    </h:panelGrid>
 
     <div style="float: right">
-        <h:commandButton value="EDIT" type="submit" action="#{NewsManager.removeAll()}" />
-        <h:commandButton value="DELETE" type="submit" onclick="alert('Hello World!');" />
+        <h:commandButton value="EDIT" action="editNewsPage" >
+            <h:inputHidden value="#{NewsBean.news.title}"></h:inputHidden>
+            <h:inputHidden value="#{NewsBean.news.date}"></h:inputHidden>
+            <h:inputHidden value="#{NewsBean.news.brief}"></h:inputHidden>
+            <h:inputHidden value="#{NewsBean.news.content}"></h:inputHidden>
+            <h:inputHidden value="#{NewsBean.news.id}"></h:inputHidden>
+        </h:commandButton>
+        <h:commandButton value="DELETE" type="submit" action="#{NewsManager.remove(NewsBean.news.id)}" />
     </div>
 
 </h:form>

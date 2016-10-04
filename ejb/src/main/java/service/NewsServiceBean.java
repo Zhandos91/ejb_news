@@ -37,8 +37,9 @@ public class NewsServiceBean implements NewsService {
     }
 
     @Override
-    public boolean remove(int id) {
-        return newsDAO.remove(id);
+    public String remove(int id) {
+        newsDAO.remove(id);
+        return "index";
     }
 
     @Override

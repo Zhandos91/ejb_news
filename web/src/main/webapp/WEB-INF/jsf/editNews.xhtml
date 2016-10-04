@@ -10,13 +10,13 @@
 
 <h:form>
     <h:panelGrid columns="2" cellpadding="5">
-        <h:outputLabel value="News Title:"/>
+        <h:outputLabel value="News Title"/>
         <h:inputTextarea value="#{NewsBean.news.title}" cols="35"></h:inputTextarea>
-        <h:outputLabel value="News Date:"/>
+        <h:outputLabel value="News Date"/>
         <h:inputText value="#{NewsBean.news.date}"></h:inputText>
-        <h:outputLabel value="Brief:"/>
+        <h:outputLabel value="Brief"/>
         <h:inputTextarea value="#{NewsBean.news.brief}" rows="5" cols="35"></h:inputTextarea>
-        <h:outputLabel value="Content:"/>
+        <h:outputLabel value="Content"/>
         <h:inputTextarea value="#{NewsBean.news.content}" rows="7" cols="35"></h:inputTextarea>
         <h:inputHidden value="#{NewsBean.news.id}"></h:inputHidden>
     </h:panelGrid>
