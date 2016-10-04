@@ -23,7 +23,6 @@ public class NewsServiceBean implements NewsService {
     @Inject
     CheckBoxHandler checkBoxHandler;
 
-
     @Override
     public List<News> getList() {
         logger.info("I'm getting the list");

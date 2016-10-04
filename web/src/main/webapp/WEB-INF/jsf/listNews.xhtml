@@ -38,23 +38,22 @@
                     <!--<f:setPropertyActionListener target="#{News.content}" value="#{news.content}" />-->
                 </h:link>
 
-                    <h:outputText value="#{news.id}" />
+                    <!--<h:outputText value="#{news.id}" />-->
                     <h:selectBooleanCheckbox value="#{checkBoxHandler.checkMap[news.id]}" >
                     </h:selectBooleanCheckbox>
                 </div>
             </div>
 
 
-            <div style="background-color: aqua;">
-                <h:outputLabel value="#{news.id}" />
-            </div>
+            <!--<div style="background-color: aqua;">-->
+                <!--<h:outputLabel value="#{news.id}" />-->
+            <!--</div>-->
 
 
         </ui:repeat>
 
             <div style="float: right">
                 <h:commandButton value="Delete" type="submit" action="#{NewsManager.removeAll()}" />
-                <h:commandButton value="Click Me!" type="submit" onclick="alert('Hello World!');" />
             </div>
 
         </h:form>

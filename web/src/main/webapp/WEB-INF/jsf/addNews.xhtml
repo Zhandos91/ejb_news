@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <f:view>
-    <h:outputLabel value="Adding news"/>
+    <h:outputLabel value="Add news"/>
 </f:view>
 
 <h:form>
@@ -17,15 +17,15 @@
         <h:outputLabel value="News Date:" />
         <h:inputText value="#{NewsBean.news.date}"></h:inputText>
         <h:outputLabel value="Brief:" />
-        <h:inputText value="#{NewsBean.news.brief}"></h:inputText>
+        <h:inputTextarea value="#{NewsBean.news.brief}" rows="5" cols="35"></h:inputTextarea>
         <h:outputLabel value="Content:" />
-        <h:inputText value="#{NewsBean.news.content}"></h:inputText>
-        <h:outputLabel></h:outputLabel>
-        <h:commandButton value="Submit" action="#{NewsManager.add(NewsBean.news)}"/>
+        <h:inputTextarea value="#{NewsBean.news.content}" rows="7" cols="35"></h:inputTextarea>
+
     </h:panelGrid>
-
-
-
+<div style="margin-left: 100px">
+    <h:commandButton value="SAVE" action="#{NewsManager.add(NewsBean.news)}"/>
+    <h:commandButton value="CANCEL" action="index"></h:commandButton>
+</div>
             <!--<f:setPropertyActionListener target="#{News}" value="#{News}" />-->
 
 
