@@ -1,9 +1,8 @@
-package service;
+package jsfBeans;
 
-import dao.DAO;
 import model.News;
 import org.slf4j.Logger;
-
+import service.Service;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -12,59 +11,47 @@ import java.util.Map;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-
-@Named("NewsManager")
+@Named
 @RequestScoped
-public class NewsServiceBean implements NewsService {
+public class NewsManager {
 
-    private static Logger logger = getLogger(NewsService.class);
+    private static Logger logger = getLogger(Service.class);
     @Inject
-    private DAO newsDAO;
-    @Inject
-    CheckBoxHandler checkBoxHandler;
+    Service service;
+    @Inject CheckBoxHandler checkBoxHandler;
 
-    @Override
     public List<News> getList() {
         logger.info("I'm getting the list");
-        return newsDAO.getList();
+        return service.getList();
     }
 
-    @Override
     public String save(News news) {
         logger.info("Saving News: {}", news);
-        newsDAO.save(news);
+        service.save(news);
         return "index";
     }
 
-    @Override
     public String remove(int id) {
-        newsDAO.remove(id);
+        service.remove(id);
         return "index";
     }
 
-    @Override
     public News fetchById(int id) {
-        return newsDAO.fetchById(id);
+        return service.fetchById(id);
     }
 
-    @Override
     public String add(News news) {
         logger.info("Adding News {}", news);
-        newsDAO.add(news);
+        service.add(news);
         return "index";
     }
 
-    @Override
     public void removeAll() {
 
         logger.info("Booleans {}", checkBoxHandler.getCheckMap());
-
-        logger.error("checked is empty: {}", checkBoxHandler.getCheckMap().isEmpty());
-
         for (Map.Entry<Integer, Boolean> entry : checkBoxHandler.getCheckMap().entrySet()) {
-
             if (entry.getValue()) {
-                newsDAO.remove(entry.getKey());
+                service.remove(entry.getKey());
             }
         }
     }

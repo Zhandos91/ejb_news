@@ -9,7 +9,7 @@
 <h:body>
     <ui:composition>
         <h:form>
-            <ui:repeat value="#{NewsManager.getList()}" var="news">
+            <ui:repeat value="#{newsManager.getList()}" var="news">
 
                 <div style="padding-top:50px; margin-bottom: 50px; border:1px solid; background-color: darkgoldenrod">
                     <h:outputLabel style="float:left">#{news.title}</h:outputLabel>
@@ -24,22 +24,21 @@
                     <div style="float: right;">
 
                         <h:commandLink style="padding-right: 10px" action="viewNewsPage" value="view">
-                            <f:setPropertyActionListener target="#{NewsBean.news.title}" value="#{news.title}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.date}" value="#{news.date}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.brief}" value="#{news.brief}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.content}" value="#{news.content}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.id}" value="#{news.id}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.title}" value="#{news.title}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.date}" value="#{news.date}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.brief}" value="#{news.brief}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.content}" value="#{news.content}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.id}" value="#{news.id}"/>
                         </h:commandLink>
 
                         <h:commandLink style="padding-right: 10px" action="editNewsPage" value="edit">
-                            <f:setPropertyActionListener target="#{NewsBean.news.title}" value="#{news.title}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.date}" value="#{news.date}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.brief}" value="#{news.brief}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.content}" value="#{news.content}"/>
-                            <f:setPropertyActionListener target="#{NewsBean.news.id}" value="#{news.id}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.title}" value="#{news.title}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.date}" value="#{news.date}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.brief}" value="#{news.brief}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.content}" value="#{news.content}"/>
+                            <f:setPropertyActionListener target="#{newsBean.news.id}" value="#{news.id}"/>
                         </h:commandLink>
 
-                        <!--<h:outputText value="#{news.id}" />-->
                         <h:selectBooleanCheckbox value="#{checkBoxHandler.checkMap[news.id]}">
                         </h:selectBooleanCheckbox>
                     </div>
@@ -48,7 +47,7 @@
             </ui:repeat>
 
             <div style="float: right">
-                <h:commandButton value="Delete" type="submit" action="#{NewsManager.removeAll()}"/>
+                <h:commandButton value="Delete" type="submit" action="#{newsManager.removeAll()}"/>
             </div>
 
         </h:form>

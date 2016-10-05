@@ -7,33 +7,30 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:outputLabel value="News view"/><br/><br/>
-
-    <!--<h:outputLabel value="#{News.title}"/>-->
-    <!--<h:outputLabel value="#{News.getTitle()}"/>-->
 </f:view>
 
 <h:form>
 
     <h:panelGrid columns="2" cellpadding="5">
         <h:outputLabel value="News Title"/>
-        <h:outputLabel value="#{NewsBean.news.title}" ></h:outputLabel>
+        <h:outputLabel value="#{newsBean.news.title}" ></h:outputLabel>
         <h:outputLabel value="News Date"/>
-        <h:outputLabel value="#{NewsBean.news.date}"></h:outputLabel>
+        <h:outputLabel value="#{newsBean.news.date}"></h:outputLabel>
         <h:outputLabel value="Brief"/>
-        <h:outputLabel value="#{NewsBean.news.brief}" ></h:outputLabel>
+        <h:outputLabel value="#{newsBean.news.brief}" ></h:outputLabel>
         <h:outputLabel value="Content"/>
-        <h:outputLabel value="#{NewsBean.news.content}" ></h:outputLabel>
+        <h:outputLabel value="#{newsBean.news.content}" ></h:outputLabel>
     </h:panelGrid>
 
     <div style="float: right">
         <h:commandButton value="EDIT" action="editNewsPage" >
-            <h:inputHidden value="#{NewsBean.news.title}"></h:inputHidden>
-            <h:inputHidden value="#{NewsBean.news.date}"></h:inputHidden>
-            <h:inputHidden value="#{NewsBean.news.brief}"></h:inputHidden>
-            <h:inputHidden value="#{NewsBean.news.content}"></h:inputHidden>
-            <h:inputHidden value="#{NewsBean.news.id}"></h:inputHidden>
+            <h:inputHidden value="#{newsBean.news.title}"></h:inputHidden>
+            <h:inputHidden value="#{newsBean.news.date}"></h:inputHidden>
+            <h:inputHidden value="#{newsBean.news.brief}"></h:inputHidden>
+            <h:inputHidden value="#{newsBean.news.content}"></h:inputHidden>
+            <h:inputHidden value="#{newsBean.news.id}"></h:inputHidden>
         </h:commandButton>
-        <h:commandButton value="DELETE" type="submit" action="#{NewsManager.remove(NewsBean.news.id)}" />
+        <h:commandButton value="DELETE" type="submit" action="#{newsManager.remove(newsBean.news.id)}" />
     </div>
 
 </h:form>

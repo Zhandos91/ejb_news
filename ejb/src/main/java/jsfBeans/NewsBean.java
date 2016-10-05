@@ -1,14 +1,13 @@
-package service;
+package jsfBeans;
 
 import model.News;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.io.Serializable;
 
-@Named("NewsBean")
+@Named
 @RequestScoped
-public class NewsBean implements Serializable {
+public class NewsBean {
 
     private News news = new News();
 
