@@ -2,7 +2,9 @@ package jsfBeans;
 
 import model.News;
 import org.slf4j.Logger;
-import service.Service;
+import service.NewsService;
+
+import javax.ejb.EJB;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,9 +17,9 @@ import static org.slf4j.LoggerFactory.getLogger;
 @RequestScoped
 public class NewsManager {
 
-    private static Logger logger = getLogger(Service.class);
-    @Inject
-    Service service;
+    private static Logger logger = getLogger(NewsService.class);
+    @EJB(beanName = "NewsService")
+    NewsService service;
     @Inject CheckBoxHandler checkBoxHandler;
 
     public List<News> getList() {

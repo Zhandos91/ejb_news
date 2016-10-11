@@ -6,7 +6,7 @@ import javax.ejb.Local;
 import java.util.List;
 
 @Local
-public interface Service {
+public interface NewsService {
     List<News> getList();
     News save(News news);
     boolean remove(int id);
